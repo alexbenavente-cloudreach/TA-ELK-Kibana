@@ -1,4 +1,5 @@
-data "aws_ami" "aws_basic_ami" {
+
+data "aws_ami" "aws_ubuntu" {
     owners = [var.aws_owner_id]
     most_recent = true
     filter {
@@ -6,7 +7,6 @@ data "aws_ami" "aws_basic_ami" {
         values = [var.aws_ami_name]
     }
 }
-
 
 data "aws_vpc" "main_vpc"{
     filter{
