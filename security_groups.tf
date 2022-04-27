@@ -3,11 +3,30 @@ resource "aws_security_group" "kibana_sg" {
   ingress {
     description = "ingress rules"
     cidr_blocks = [ "0.0.0.0/0" ]
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+  }
+  ingress {
+    description = "Allow ssh into bastion host"
+    cidr_blocks = [ "0.0.0.0/0" ]
     from_port = 5601
     protocol = "tcp"
     to_port = 5601
   }
- tags={
+
+  egress {
+    description = "egress rules"
+    cidr_blocks = [ "0.0.0.0/0" ]
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+  }
+  tags={
     Name="kibana_sg"
   }
- }
+}
+
+
+
+
