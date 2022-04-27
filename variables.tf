@@ -20,7 +20,7 @@ variable "kibana_subnet_name" {
 
 
 variable "my_keypair" {
-  default = "aws_keypair"
+  default = "elk_keypair"
 }
 
 
