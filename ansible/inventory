@@ -1,0 +1,10 @@
+[bastionhost]
+34.228.6.206
+
+[kibana_server]
+192.168.1.215
+
+[elasticsearch_server:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/elk_keypair.pem
+ansible_ssh_common_args="-o ProxyCommand=\"ssh -q ubuntu@34.228.6.206 -o IdentityFile=~/.ssh/elk_keypair.pem -W %h:%p\""
