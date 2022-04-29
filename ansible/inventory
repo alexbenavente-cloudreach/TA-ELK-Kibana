@@ -1,8 +1,0 @@
-[bastionhost]
-34.228.6.206
-
-[kibana_server]
-192.168.1.215
-
-[kibana_server:vars]
-ansible_user=ubuntu
