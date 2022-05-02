@@ -3,7 +3,7 @@
   become: true
   tasks:  
 
-#adding the Elasticsearch package as test to make sure Logstach will run
+#adding the Elasticsearch package as test to make sure Kibana will run
   - name: Adding Elasticsearch PGP Key
     shell: |
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
@@ -34,32 +34,6 @@
       destfile: /etc/kibana/kibana.yml
       regexp: 'server.host:'
       line: 'server.host: 0.0.0.0'
-
-  - name: Defining server port
-    lineinfile:
-      destfile: /etc/kibana/kibana.yml
-      regexp: 'server.port:'
-      line: 'server.port: 5601'
-    
-  - name: Defining Elasticsearch URL
-    lineinfile:
-      destfile: /etc/kibana/kibana.yml
-      regexp: 'elasticsearch.url:'
-      line: 'elasticsearch.url: "http://localhost:9200"'
-# Install Kibana 
-
-  - name: Install Kibana with apt
-    apt:
-     name: kibana
-     update_cache: yes
- 
-# Configurations
-
-  - name: Updating the config file to allow outside access
-    lineinfile:
-     destfile: /etc/kibana/kibana.yml
-     regexp: 'server.host:'
-     line: 'server.host: 0.0.0.0'
 
   - name: Defining server port
     lineinfile:
